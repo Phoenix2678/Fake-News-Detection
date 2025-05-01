@@ -1,0 +1,58 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #2979ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📰 Fake News Detector</h2>
+        <form method="post">
+            <label for="news">Paste a news article or headline below:</label><br><br>
+            <textarea name="news" required placeholder="Enter news text here..."></textarea><br>
+            <button type="submit">Check</button>
+        </form>
+        {% if prediction %}
+        <div class="result">
+            Prediction: <span style="color: {{ 'green' if prediction == 'REAL' else 'red' }}">{{ prediction }}</span>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
